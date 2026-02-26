@@ -1,12 +1,15 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Hero from "@/components/Hero";
+import TrustBar from "@/components/TrustBar";
 import ServiceCard from "@/components/ServiceCard";
+import HowItWorks from "@/components/HowItWorks";
 import ValueProps from "@/components/ValueProps";
+import ClientLogos from "@/components/ClientLogos";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import CTABanner from "@/components/CTABanner";
-import AnimateOnScroll from "@/components/AnimateOnScroll";
+import ServicesGrid from "@/components/ServicesGrid";
 
 const services = [
   {
@@ -17,6 +20,7 @@ const services = [
       "Durable uniforms for manufacturing, automotive, HVAC, and other demanding industries. Built for safety and performance.",
     linkText: "Gear Up the Crew →",
     linkHref: "/services/industrial",
+    featured: true,
   },
   {
     image:
@@ -42,59 +46,59 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <Hero
-        tag="CHARLOTTE'S PREMIER UNIFORM PARTNER"
-        heading="Finally, Uniform Services Made Simple"
-        subtext="No long-term contracts. No surprise fees. Just fast installs, fair pricing, and real people who answer the phone."
-        backgroundImage="https://www.generallinen.com/wp-content/uploads/2021/10/Manufacturing-Industrial-Uniforms-Cover-Image.jpg"
-        showScrollIndicator
-      >
-        <div className="flex flex-wrap gap-4">
-          <Link href="/contact" className="btn-primary">
-            Get Started
-            <ArrowRight size={18} />
-          </Link>
-          <Link href="/about" className="btn-outlined">
-            Learn Our Story
-          </Link>
-        </div>
-      </Hero>
+      <div data-tour="hero">
+        <Hero
+          tag="CHARLOTTE'S PREMIER UNIFORM PARTNER"
+          heading="Finally, Uniform Services Made Simple"
+          subtext="No long-term contracts. No surprise fees. Just fast installs, fair pricing, and real people who answer the phone."
+          backgroundImage="https://www.generallinen.com/wp-content/uploads/2021/10/Manufacturing-Industrial-Uniforms-Cover-Image.jpg"
+          showScrollIndicator
+        >
+          <div className="flex flex-wrap gap-4">
+            <Link href="/contact" className="btn-primary">
+              Outfit Your Team
+              <ArrowRight size={18} />
+            </Link>
+            <Link href="/about" className="btn-outlined">
+              See How We&apos;re Different
+            </Link>
+          </div>
+        </Hero>
+      </div>
+
+      {/* Trust Stats Bar */}
+      <TrustBar />
 
       {/* Services Section */}
-      <section className="section-padding bg-ivory">
-        <div className="container-wide">
-          <AnimateOnScroll variant="fadeUp">
-            <div className="text-center mb-16">
-              <span className="section-tag">WHAT WE DO</span>
-              <h2 className="heading-section text-navy mt-5 mb-4">
-                Services &amp; Solutions
-              </h2>
-              <p className="text-slate text-lg max-w-2xl mx-auto">
-                Outfit your team with dependable uniforms and facility essentials
-                built for every industry.
-              </p>
-            </div>
-          </AnimateOnScroll>
+      <div data-tour="services">
+        <ServicesGrid services={services} />
+      </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {services.map((service, i) => (
-              <ServiceCard key={service.title} {...service} index={i} />
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* How It Works */}
+      <div data-tour="how-it-works">
+        <HowItWorks />
+      </div>
 
       {/* Value Props */}
-      <ValueProps />
+      <div data-tour="why-bright-way">
+        <ValueProps />
+      </div>
+
+      {/* Client Logos */}
+      <ClientLogos />
 
       {/* Testimonials */}
-      <Testimonials />
+      <div data-tour="testimonials">
+        <Testimonials />
+      </div>
 
       {/* FAQ */}
       <FAQ />
 
       {/* Bottom CTA */}
-      <CTABanner />
+      <div data-tour="cta">
+        <CTABanner />
+      </div>
     </>
   );
 }

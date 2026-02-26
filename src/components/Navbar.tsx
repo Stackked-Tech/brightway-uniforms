@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown, Phone } from "lucide-react";
+import { motion } from "framer-motion";
 
 const services = [
   { name: "All Services", href: "/services" },
@@ -44,7 +45,9 @@ export default function Navbar() {
     } else {
       document.body.style.overflow = "";
     }
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [mobileOpen]);
 
   const isActive = (href: string) => {
@@ -54,8 +57,11 @@ export default function Navbar() {
 
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 anim-slide-down transition-all duration-500 ${
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ type: "spring", stiffness: 200, damping: 25, delay: 0.1 }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
             ? "bg-white/95 backdrop-blur-md shadow-nav"
             : "bg-transparent"
@@ -70,7 +76,9 @@ export default function Navbar() {
                 alt="Bright Way"
                 width={160}
                 height={40}
-                className="h-9 lg:h-10 w-auto"
+                className={`h-9 lg:h-10 w-auto transition-all duration-300 ${
+                  scrolled ? "" : "brightness-0 invert"
+                }`}
                 priority
               />
             </Link>
@@ -83,7 +91,9 @@ export default function Navbar() {
                   href={link.href}
                   className={`nav-link px-4 py-2 text-sm font-medium transition-colors duration-300 ${
                     isActive(link.href)
-                      ? scrolled ? "text-cyan" : "text-white"
+                      ? scrolled
+                        ? "text-cyan"
+                        : "text-white"
                       : scrolled
                         ? "text-navy/70 hover:text-navy"
                         : "text-white/70 hover:text-white"
@@ -102,7 +112,9 @@ export default function Navbar() {
                 <button
                   className={`nav-link flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors duration-300 ${
                     isActive("/services")
-                      ? scrolled ? "text-cyan" : "text-white"
+                      ? scrolled
+                        ? "text-cyan"
+                        : "text-white"
                       : scrolled
                         ? "text-navy/70 hover:text-navy"
                         : "text-white/70 hover:text-white"
@@ -115,7 +127,9 @@ export default function Navbar() {
                   />
                 </button>
 
-                <div className={`absolute top-full left-0 pt-2 nav-dropdown ${servicesOpen ? "open" : ""}`}>
+                <div
+                  className={`absolute top-full left-0 pt-2 nav-dropdown ${servicesOpen ? "open" : ""}`}
+                >
                   <div className="bg-white rounded-xl shadow-card-hover p-2 min-w-[220px] border border-navy/5">
                     {services.map((service) => (
                       <Link
@@ -139,24 +153,30 @@ export default function Navbar() {
             <div className="hidden lg:flex items-center gap-3">
               <a
                 href="tel:7048271868"
-                className={`btn-outlined-dark flex items-center gap-2 !py-2.5 !px-4 !text-sm ${
+                className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-[var(--radius-button)] text-sm font-semibold border-[1.5px] transition-all duration-300 active:scale-[0.97] ${
                   scrolled
-                    ? "!border-navy/15 !text-navy/70 hover:!text-navy hover:!border-navy/30"
-                    : "!border-white/30 !text-white/80 hover:!text-white hover:!border-white/60 hover:!bg-white/5"
+                    ? "border-navy/15 text-navy/70 hover:text-navy hover:border-navy/30"
+                    : "border-white/30 text-white/80 hover:text-white hover:border-white/60 hover:bg-white/5"
                 }`}
               >
                 <Phone size={14} />
                 Call Now
               </a>
-              <Link href="/contact" className="btn-primary !py-2.5 !px-5 !text-sm">
-                Get A Quote
-              </Link>
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+              >
+                <Link href="/contact" className="btn-primary !py-2.5 !px-5 !text-sm">
+                  Get A Quote
+                </Link>
+              </motion.div>
             </div>
 
             {/* Mobile Hamburger */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className={`lg:hidden relative z-10 p-2 rounded-lg transition-colors ${
+              className={`lg:hidden relative z-10 p-2 rounded-lg transition-colors active:scale-95 ${
                 mobileOpen
                   ? "text-navy"
                   : scrolled
@@ -169,7 +189,7 @@ export default function Navbar() {
             </button>
           </nav>
         </div>
-      </header>
+      </motion.header>
 
       {/* Mobile Overlay */}
       <div
@@ -201,9 +221,7 @@ export default function Navbar() {
             <button
               onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
               className={`flex items-center justify-between w-full px-4 py-3 text-base font-medium rounded-lg transition-colors ${
-                isActive("/services")
-                  ? "text-cyan"
-                  : "text-navy/70"
+                isActive("/services") ? "text-cyan" : "text-navy/70"
               }`}
             >
               Services
@@ -237,12 +255,15 @@ export default function Navbar() {
           <div className="mt-8 pt-8 border-t border-navy/8 flex flex-col gap-3">
             <a
               href="tel:7048271868"
-              className="btn-outlined-dark justify-center"
+              className="btn-outlined-dark justify-center active:scale-[0.97] transition-transform"
             >
               <Phone size={16} />
               Call 704-827-1868
             </a>
-            <Link href="/contact" className="btn-primary justify-center">
+            <Link
+              href="/contact"
+              className="btn-primary justify-center active:scale-[0.97] transition-transform"
+            >
               Get A Quote
             </Link>
           </div>
