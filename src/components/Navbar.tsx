@@ -76,9 +76,7 @@ export default function Navbar() {
                 alt="Bright Way"
                 width={160}
                 height={40}
-                className={`h-9 lg:h-10 w-auto transition-all duration-300 ${
-                  scrolled ? "" : "brightness-0 invert"
-                }`}
+                className="h-9 lg:h-10 w-auto transition-all duration-300"
                 priority
               />
             </Link>
