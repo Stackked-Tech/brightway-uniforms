@@ -35,7 +35,7 @@ export default function Footer() {
                 alt="Bright Way"
                 width={150}
                 height={38}
-                className="h-9 w-auto brightness-0 invert opacity-90"
+                className="h-9 w-auto opacity-90"
               />
             </Link>
             <p className="text-white/50 text-sm leading-relaxed max-w-xs">
