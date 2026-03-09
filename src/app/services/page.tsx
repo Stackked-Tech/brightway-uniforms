@@ -1,68 +1,66 @@
-import { Footprints, SprayCanIcon, Shirt } from "lucide-react";
+import type { Metadata } from "next";
+import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Our Solutions | Bright Way Uniforms & Facility Services",
+  description:
+    "Explore Bright Way's full range of solutions: uniform rental, facility services, flame resistant clothing, restroom and hygiene programs, and first aid supplies for Charlotte-area businesses.",
+};
+import Link from "next/link";
 import Hero from "@/components/Hero";
-import ServiceCard from "@/components/ServiceCard";
 import CTABanner from "@/components/CTABanner";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 
-const industries = [
+const solutions = [
   {
     image:
       "https://www.serviceuniform.com/wp-content/uploads/2022/10/manufacturing-uniforms-colorado-scaled.jpg",
-    title: "Industrial",
+    title: "Uniforms & Work Apparel",
     description:
-      "Durable uniforms for manufacturing, automotive, HVAC, and other demanding industries. Built for safety and performance.",
-    linkText: "Gear Up the Crew →",
-    linkHref: "/services/industrial",
+      "Managed uniform rental programs, work shirts, pants, culinary apparel, scrubs, outerwear, and more — for every role and every industry.",
+    href: "/services/uniforms",
   },
   {
     image:
-      "https://images.ctfassets.net/9hll0m1ctx1b/4aaLhZoUpPeT9WkRDNxebo/14da3b42a593c82d82768a7c699cdf3d/Chef.jpg?w=1000&h=666&fl=progressive&q=80&fm=jpg",
-    title: "Restaurants",
+      "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80",
+    title: "Facility Services",
     description:
-      "Crisp chef coats, aprons, server attire, and quality linens to enhance your establishment's image.",
-    linkText: "Style That Handles the Heat →",
-    linkHref: "/services/restaurants",
+      "Floor mats, janitorial supplies, restroom stocking, kitchen supplies, and industrial cleaning products to keep your facility running smoothly.",
+    href: "/services/facility",
   },
   {
     image:
-      "https://images.squarespace-cdn.com/content/5b0ba6af36099bd6c699181b/1752570110820-ZYZFXRFHVXFMQR090K2W/corporate-uniforms-guide-Professional-business-attire-team-banner.jpg",
-    title: "Professional",
+      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80",
+    title: "Flame Resistant Clothing",
     description:
-      "Smart and comfortable uniforms for front office, municipalities, healthcare (non-clinical), and other professional environments.",
-    linkText: "Dress to Impress →",
-    linkHref: "/services/professional",
-  },
-];
-
-const additionalServices = [
-  {
-    icon: Footprints,
-    title: "Floor Care & Mat Programs",
-    description:
-      "Your floors see a lot—dirt, moisture, wear. We provide high-quality mats and floor care solutions to enhance safety, protect your facility, and support your branding.",
+      "Arc-rated and FR workwear — shirts, pants, coveralls, outerwear, and hi-vis options that meet NFPA and ASTM safety standards.",
+    href: "/services/flame-resistant",
   },
   {
-    icon: SprayCanIcon,
-    title: "Restroom & Facility Stocking",
+    image:
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=80",
+    title: "Restroom & Hygiene Solutions",
     description:
-      "Avoid supply runs and empty dispensers. Bright Way ensures your restrooms, kitchens, and common areas are always clean, stocked, and guest-ready.",
+      "Restroom supplies, hand hygiene, air fresheners, dispenser systems, and antimicrobial mats to keep your facilities clean and guest-ready.",
+    href: "/services/restroom-hygiene",
   },
   {
-    icon: Shirt,
-    title: "Branded Apparel & Promotional Products",
+    image:
+      "https://images.unsplash.com/photo-1603398938378-e54eab446dde?w=800&q=80",
+    title: "First Aid & Safety",
     description:
-      "Your team is your brand. We make sure they look the part with customized apparel and promotional gear that carries your message further.",
+      "First aid cabinet stocking, PPE supplies, AEDs, eyewash stations, and office water coolers — everything you need to keep your team safe.",
+    href: "/services/first-aid-safety",
   },
 ];
 
 export default function ServicesPage() {
   return (
     <>
-      {/* Hero */}
       <Hero
-        tag="OUR SERVICES"
-        heading="Our Services"
-        subtext="Tailored solutions for every industry."
+        tag="OUR SOLUTIONS"
+        heading="What We Provide"
+        subtext="Comprehensive uniform and facility solutions for businesses of every size and industry."
         backgroundImage="https://cityuniformsandlinen.com/wp-content/uploads/2021/07/Manufacturing-Industrial-Uniforms-Web-Header-City-Uniforms-Linen.jpg"
       />
 
@@ -72,12 +70,11 @@ export default function ServicesPage() {
           <AnimateOnScroll variant="fadeUp">
             <div className="max-w-3xl mx-auto text-center">
               <p className="text-slate text-lg leading-relaxed mb-4">
-                At Bright Way, we understand that each industry has unique demands, and
-                we&apos;re committed to meeting those needs with precision and care.
-                Whether your business is industrial, in hospitality, or professional
-                services, our tailored solutions—ranging from uniforms and shop rags to
-                safety gear and custom apparel—keep your team looking professional,
-                working safely, and performing at their best.
+                From workwear and facility supplies to safety equipment and
+                hygiene programs, Bright Way delivers everything your business
+                needs under one roof. No juggling multiple vendors — just one
+                partner who keeps your team outfitted, your facility stocked,
+                and your workplace safe.
               </p>
               <p className="text-navy font-semibold text-lg">
                 We believe service should simplify your day, not complicate it.
@@ -87,52 +84,44 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Industry Cards */}
+      {/* Solutions Grid */}
       <section className="section-padding bg-ivory-dark">
         <div className="container-wide">
-          <AnimateOnScroll variant="fadeUp">
-            <div className="text-center mb-16">
-              <span className="section-tag">INDUSTRIES</span>
-              <h2 className="heading-section text-navy mt-5">
-                Solutions by Industry
-              </h2>
-            </div>
-          </AnimateOnScroll>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {industries.map((industry, i) => (
-              <ServiceCard key={industry.title} {...industry} index={i} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Additional Services */}
-      <section className="section-padding bg-ivory">
-        <div className="container-wide">
-          <AnimateOnScroll variant="fadeUp">
-            <div className="text-center mb-16">
-              <span className="section-tag">BEYOND UNIFORMS</span>
-              <h2 className="heading-section text-navy mt-5">
-                Additional Services
-              </h2>
-            </div>
-          </AnimateOnScroll>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            {additionalServices.map((service, i) => (
-              <AnimateOnScroll key={service.title} variant="fadeUp" delay={i * 0.12}>
-                <div className="bg-white rounded-2xl p-8 md:p-10 h-full shadow-card hover:shadow-card-hover transition-all duration-400">
-                  <div className="w-12 h-12 rounded-xl bg-cyan/8 flex items-center justify-center mb-6">
-                    <service.icon size={22} className="text-cyan" strokeWidth={1.75} />
+            {solutions.map((solution, i) => (
+              <AnimateOnScroll key={solution.title} variant="fadeUp" delay={i * 0.08}>
+                <Link
+                  href={solution.href}
+                  className="group block h-full bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-shadow duration-400"
+                >
+                  {/* Image */}
+                  <div className="relative h-52 md:h-56 overflow-hidden">
+                    <Image
+                      src={solution.image}
+                      alt={solution.title}
+                      fill
+                      className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
-                  <h3 className="font-display text-xl text-navy mb-3">
-                    {service.title}
-                  </h3>
-                  <p className="text-slate text-[0.9375rem] leading-relaxed">
-                    {service.description}
-                  </p>
-                </div>
+
+                  {/* Cyan accent */}
+                  <div className="h-0.5 bg-gradient-to-r from-cyan via-cyan-light to-transparent" />
+
+                  {/* Content */}
+                  <div className="p-6 md:p-8">
+                    <h3 className="font-display text-xl text-navy mb-3">
+                      {solution.title}
+                    </h3>
+                    <p className="text-slate text-[0.9375rem] leading-relaxed mb-4">
+                      {solution.description}
+                    </p>
+                    <span className="inline-flex items-center gap-1.5 text-cyan font-semibold text-sm group-hover:gap-3 transition-all duration-300">
+                      Learn More &rarr;
+                    </span>
+                  </div>
+                </Link>
               </AnimateOnScroll>
             ))}
           </div>
@@ -140,7 +129,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Scalability */}
-      <section className="section-padding-sm bg-ivory-dark">
+      <section className="section-padding-sm bg-ivory">
         <div className="container-wide">
           <AnimateOnScroll variant="fadeUp">
             <div className="max-w-3xl mx-auto text-center">
@@ -150,16 +139,15 @@ export default function ServicesPage() {
               </h2>
               <p className="text-slate text-lg leading-relaxed">
                 A small business shouldn&apos;t have to choose between quality and
-                service—and neither should a national chain. Bright Way scales to meet
-                your needs, offering consistent, high-quality programs for businesses
-                of every size.
+                service — and neither should a national chain. Bright Way scales to
+                meet your needs, offering consistent, high-quality programs for
+                businesses of every size.
               </p>
             </div>
           </AnimateOnScroll>
         </div>
       </section>
 
-      {/* Bottom CTA */}
       <CTABanner />
     </>
   );

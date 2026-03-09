@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 import { staggerContainer, staggerItem } from "@/lib/animations";
@@ -24,10 +25,16 @@ export default function Hero({
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
-        style={{ backgroundImage: `url(${backgroundImage})` }}
-      />
+      <div className="absolute inset-0 scale-105">
+        <Image
+          src={backgroundImage}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      </div>
 
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/75 to-navy/40" />
@@ -38,7 +45,7 @@ export default function Hero({
       <div className="absolute bottom-1/3 right-[25%] w-48 h-48 bg-amber/[0.03] rounded-full blur-3xl pointer-events-none" />
 
       {/* Content */}
-      <div className="relative z-10 container-wide w-full pt-32 pb-24">
+      <div className="relative z-10 container-wide w-full pt-32 lg:pt-[10.25rem] pb-24">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -80,10 +87,10 @@ export default function Hero({
           className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
         >
           <div className="scroll-indicator flex flex-col items-center gap-1">
-            <span className="text-white/40 text-xs font-medium tracking-wider uppercase">
+            <span className="text-white/60 text-xs font-medium tracking-wider uppercase">
               Scroll
             </span>
-            <ChevronDown size={20} className="text-white/40" />
+            <ChevronDown size={20} className="text-white/60" />
           </div>
         </motion.div>
       )}

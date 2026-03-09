@@ -5,7 +5,7 @@ import { Sparkles, Heart, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
 import { staggerContainer, staggerItem, fadeLeft, fadeRight } from "@/lib/animations";
 import Hero from "@/components/Hero";
-import ServicesGrid from "@/components/ServicesGrid";
+import ComparisonTable from "@/components/ComparisonTable";
 import ValueProps from "@/components/ValueProps";
 import CTABanner from "@/components/CTABanner";
 
@@ -30,35 +30,6 @@ const values = [
   },
 ];
 
-const industries = [
-  {
-    image:
-      "https://www.serviceuniform.com/wp-content/uploads/2022/10/manufacturing-uniforms-colorado-scaled.jpg",
-    title: "Industrial",
-    description:
-      "Durable uniforms for manufacturing, automotive, HVAC, and other demanding industries. Built for safety and performance.",
-    linkText: "Explore Industrial →",
-    linkHref: "/services/industrial",
-  },
-  {
-    image:
-      "https://images.ctfassets.net/9hll0m1ctx1b/4aaLhZoUpPeT9WkRDNxebo/14da3b42a593c82d82768a7c699cdf3d/Chef.jpg?w=1000&h=666&fl=progressive&q=80&fm=jpg",
-    title: "Restaurants",
-    description:
-      "Crisp chef coats, aprons, server attire, and quality linens to enhance your establishment's image.",
-    linkText: "Explore Restaurants →",
-    linkHref: "/services/restaurants",
-  },
-  {
-    image:
-      "https://images.squarespace-cdn.com/content/5b0ba6af36099bd6c699181b/1752570110820-ZYZFXRFHVXFMQR090K2W/corporate-uniforms-guide-Professional-business-attire-team-banner.jpg",
-    title: "Professional",
-    description:
-      "Smart and comfortable uniforms for front office, municipalities, healthcare (non-clinical), and other professional environments.",
-    linkText: "Explore Professional →",
-    linkHref: "/services/professional",
-  },
-];
 
 export default function AboutPage() {
   return (
@@ -204,13 +175,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Industries We Serve */}
-      <ServicesGrid
-        services={industries}
-        tag="INDUSTRIES"
-        heading="Industries We Serve"
-        subheading="From factory floors to front offices, we outfit teams across every sector."
-      />
+      {/* Comparison Table */}
+      <ComparisonTable />
 
       {/* Value Props */}
       <ValueProps />

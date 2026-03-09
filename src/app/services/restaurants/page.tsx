@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import Hero from "@/components/Hero";
 import ServiceBlock from "@/components/ServiceBlock";
 import CTABanner from "@/components/CTABanner";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
+
+export const metadata: Metadata = {
+  title: "Restaurant Uniforms | Bright Way — Chef Coats, Aprons & Linens",
+  description:
+    "Restaurant and hospitality uniform services including chef coats, server apparel, bar towels, and kitchen linens. Weekly service across Charlotte, NC.",
+};
 
 const serviceBlocks = [
   {

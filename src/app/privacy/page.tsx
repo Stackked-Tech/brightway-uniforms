@@ -42,7 +42,7 @@ export default function PrivacyPage() {
   return (
     <>
       {/* Spacer for navbar */}
-      <div className="h-24 lg:h-28 bg-navy" />
+      <div className="h-24 lg:h-[9.25rem] bg-navy" />
 
       <section className="section-padding bg-ivory">
         <div className="container-wide max-w-3xl">

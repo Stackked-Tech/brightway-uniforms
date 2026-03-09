@@ -24,9 +24,9 @@ const tourSteps: TourStep[] = [
   },
   {
     target: "services",
-    title: "Our Services",
+    title: "Our Solutions",
     description:
-      "We serve three industries — Industrial, Restaurants, and Professional. Click any card to learn more.",
+      "From uniforms to facility services — we've got your business covered. Click any card to learn more.",
   },
   {
     target: "how-it-works",

@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Contact Us | Bright Way — Get a Free Quote",
+  description:
+    "Get a custom quote for uniforms, facility services, or safety supplies. Call 704-827-1868 or fill out our form. Same-day response guaranteed.",
+};
 import ContactForm from "@/components/ContactForm";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
 
@@ -27,7 +34,7 @@ export default function ContactPage() {
   return (
     <>
       {/* Spacer for navbar */}
-      <div className="h-24 lg:h-28 bg-navy" />
+      <div className="h-24 lg:h-[9.25rem] bg-navy" />
 
       <section className="section-padding bg-ivory">
         <div className="container-wide">
@@ -65,7 +72,7 @@ export default function ContactPage() {
                         <item.icon size={18} className="text-cyan/80 group-hover:text-cyan" />
                       </div>
                       <div>
-                        <p className="text-white/40 text-xs font-medium uppercase tracking-wider mb-0.5">
+                        <p className="text-white/60 text-xs font-medium uppercase tracking-wider mb-0.5">
                           {item.label}
                         </p>
                         <p className="text-sm">{item.value}</p>
@@ -74,7 +81,7 @@ export default function ContactPage() {
                   ))}
 
                   <div className="mt-12 pt-8 border-t border-white/8">
-                    <div className="flex items-start gap-3 text-white/40 text-xs">
+                    <div className="flex items-start gap-3 text-white/60 text-xs">
                       <Clock size={14} className="mt-0.5 flex-shrink-0" />
                       <p className="leading-relaxed">
                         We typically respond within 24 hours. Need immediate assistance?

@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import Hero from "@/components/Hero";
 import ServiceBlock from "@/components/ServiceBlock";
 import CTABanner from "@/components/CTABanner";
 import AnimateOnScroll from "@/components/AnimateOnScroll";
+
+export const metadata: Metadata = {
+  title: "Professional Uniforms | Bright Way — Corporate & Office Apparel",
+  description:
+    "Professional uniform programs for corporate offices, banks, and business environments. Tailored apparel, laundering, and facility services in Charlotte, NC.",
+};
 
 const serviceBlocks = [
   {

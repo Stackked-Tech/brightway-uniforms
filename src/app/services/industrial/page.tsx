@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import Hero from "@/components/Hero";
 import ServiceBlock from "@/components/ServiceBlock";
 import CTABanner from "@/components/CTABanner";
+
+export const metadata: Metadata = {
+  title: "Industrial Uniforms | Bright Way — Manufacturing & Safety Workwear",
+  description:
+    "Industrial uniform rental and laundering for manufacturing, construction, and trades. Hi-vis, FR apparel, shop rags, and facility services in Charlotte, NC.",
+};
 
 const serviceBlocks = [
   {

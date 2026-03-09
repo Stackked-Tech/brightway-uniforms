@@ -4,29 +4,20 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronDown, Phone } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 
-const services = [
-  { name: "All Solutions", href: "/services" },
-  { name: "Uniforms & Work Apparel", href: "/services/uniforms" },
-  { name: "Facility Services", href: "/services/facility" },
-  { name: "Flame Resistant Clothing", href: "/services/flame-resistant" },
-  { name: "Restroom & Hygiene", href: "/services/restroom-hygiene" },
-  { name: "First Aid & Safety", href: "/services/first-aid-safety" },
-];
-
 const navLinks = [
-  { name: "Home", href: "/" },
+  { name: "Decorated Apparel", href: "/decorated-apparel" },
+  { name: "Screen Printing", href: "/decorated-apparel/screen-printing" },
+  { name: "Embroidery", href: "/decorated-apparel/embroidery" },
   { name: "About Us", href: "/about" },
   { name: "Contact Us", href: "/contact" },
 ];
 
-export default function Navbar() {
+export default function DecoratedApparelNavbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -38,7 +29,6 @@ export default function Navbar() {
 
   useEffect(() => {
     setMobileOpen(false);
-    setServicesOpen(false);
   }, [pathname]);
 
   useEffect(() => {
@@ -53,7 +43,7 @@ export default function Navbar() {
   }, [mobileOpen]);
 
   const isActive = (href: string) => {
-    if (href === "/") return pathname === "/";
+    if (href === "/decorated-apparel") return pathname === "/decorated-apparel";
     return pathname.startsWith(href);
   };
 
@@ -72,13 +62,15 @@ export default function Navbar() {
         <div className="container-wide">
           <nav className="flex items-center justify-between h-18 lg:h-20">
             {/* Logo */}
-            <Link href="/" className="relative z-10 flex-shrink-0">
+            <Link href="/decorated-apparel" className="relative z-10 flex-shrink-0">
               <Image
                 src="/logo.png"
                 alt="Bright Way"
                 width={160}
                 height={40}
-                className="h-9 lg:h-10 w-auto transition-all duration-300"
+                className={`h-9 lg:h-10 w-auto transition-all duration-300 ${
+                  scrolled ? "" : "brightness-0 invert"
+                }`}
                 priority
               />
             </Link>
@@ -102,57 +94,12 @@ export default function Navbar() {
                   {link.name}
                 </Link>
               ))}
-
-              {/* Services Dropdown */}
-              <div
-                className="relative"
-                onMouseEnter={() => setServicesOpen(true)}
-                onMouseLeave={() => setServicesOpen(false)}
-              >
-                <button
-                  className={`nav-link flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors duration-300 ${
-                    isActive("/services")
-                      ? scrolled
-                        ? "text-cyan"
-                        : "text-white"
-                      : scrolled
-                        ? "text-navy/70 hover:text-navy"
-                        : "text-white/70 hover:text-white"
-                  } ${isActive("/services") ? "active" : ""}`}
-                >
-                  Solutions
-                  <ChevronDown
-                    size={14}
-                    className={`transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""}`}
-                  />
-                </button>
-
-                <div
-                  className={`absolute top-full left-0 pt-2 nav-dropdown ${servicesOpen ? "open" : ""}`}
-                >
-                  <div className="bg-white rounded-xl shadow-card-hover p-2 min-w-[220px] border border-navy/5">
-                    {services.map((service) => (
-                      <Link
-                        key={service.href}
-                        href={service.href}
-                        className={`block px-4 py-2.5 text-sm rounded-lg transition-all duration-200 ${
-                          pathname === service.href
-                            ? "bg-cyan/8 text-cyan font-medium"
-                            : "text-navy/70 hover:bg-ivory hover:text-navy"
-                        }`}
-                      >
-                        {service.name}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </div>
             </div>
 
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-3">
               <a
-                href="tel:7048271868"
+                href="tel:7048273796"
                 className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-[var(--radius-button)] text-sm font-semibold border-[1.5px] transition-all duration-300 active:scale-[0.97] ${
                   scrolled
                     ? "border-navy/15 text-navy/70 hover:text-navy hover:border-navy/30"
@@ -160,7 +107,7 @@ export default function Navbar() {
                 }`}
               >
                 <Phone size={14} />
-                Call Now
+                704-827-3796
               </a>
               <motion.div
                 whileHover={{ scale: 1.02 }}
@@ -216,49 +163,15 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-
-            {/* Mobile Services Accordion */}
-            <button
-              onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-              className={`flex items-center justify-between w-full px-4 py-3 text-base font-medium rounded-lg transition-colors ${
-                isActive("/services") ? "text-cyan" : "text-navy/70"
-              }`}
-            >
-              Services
-              <ChevronDown
-                size={18}
-                className={`transition-transform duration-300 ${mobileServicesOpen ? "rotate-180" : ""}`}
-              />
-            </button>
-
-            <div className={`accordion-content ${mobileServicesOpen ? "open" : ""}`}>
-              <div>
-                <div className="pl-4 pb-2 flex flex-col gap-0.5">
-                  {services.map((service) => (
-                    <Link
-                      key={service.href}
-                      href={service.href}
-                      className={`block px-4 py-2.5 text-sm rounded-lg transition-colors ${
-                        pathname === service.href
-                          ? "bg-cyan/8 text-cyan font-medium"
-                          : "text-navy/60 hover:text-navy hover:bg-ivory"
-                      }`}
-                    >
-                      {service.name}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
           </div>
 
           <div className="mt-8 pt-8 border-t border-navy/8 flex flex-col gap-3">
             <a
-              href="tel:7048271868"
+              href="tel:7048273796"
               className="btn-outlined-dark justify-center active:scale-[0.97] transition-transform"
             >
               <Phone size={16} />
-              Call 704-827-1868
+              Call 704-827-3796
             </a>
             <Link
               href="/contact"

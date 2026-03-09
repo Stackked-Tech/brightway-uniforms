@@ -3,18 +3,16 @@ import Image from "next/image";
 import { Mail, Phone, MapPin } from "lucide-react";
 
 const contactInfo = [
-  { icon: Mail, text: "info@brightwayuniforms.com", href: "mailto:info@brightwayuniforms.com" },
-  { icon: Phone, text: "704-827-1868", href: "tel:7048271868" },
+  { icon: Phone, text: "704-827-3796", href: "tel:7048273796", label: "Mount Holly, NC" },
+  { icon: Phone, text: "803-230-1557", href: "tel:8032301557", label: "Rock Hill, SC" },
   { icon: MapPin, text: "1196 Noles Drive, Mount Holly, NC 28120", href: "https://maps.google.com/?q=1196+Noles+Drive+Mount+Holly+NC+28120" },
+  { icon: Mail, text: "info@brightwayuniforms.com", href: "mailto:info@brightwayuniforms.com" },
 ];
 
 const serviceLinks = [
-  { name: "Uniforms & Work Apparel", href: "/services/uniforms" },
-  { name: "Facility Services", href: "/services/facility" },
-  { name: "Flame Resistant Clothing", href: "/services/flame-resistant" },
-  { name: "Restroom & Hygiene", href: "/services/restroom-hygiene" },
-  { name: "First Aid & Safety", href: "/services/first-aid-safety" },
-  { name: "Decorated Apparel \u2192", href: "/decorated-apparel" },
+  { name: "Screen Printing", href: "/decorated-apparel/screen-printing" },
+  { name: "Embroidery", href: "/decorated-apparel/embroidery" },
+  { name: "Services & Supplies \u2192", href: "/" },
 ];
 
 const quickLinks = [
@@ -23,7 +21,7 @@ const quickLinks = [
   { name: "Privacy Policy", href: "/privacy" },
 ];
 
-export default function Footer() {
+export default function DecoratedApparelFooter() {
   return (
     <footer className="bg-navy text-white">
       <div className="container-wide section-padding-sm">
@@ -31,17 +29,17 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Brand Column */}
           <div className="lg:col-span-1">
-            <Link href="/" className="inline-block mb-6">
+            <Link href="/decorated-apparel" className="inline-block mb-6">
               <Image
                 src="/logo.png"
                 alt="Bright Way"
                 width={150}
                 height={38}
-                className="h-9 w-auto opacity-90"
+                className="h-9 w-auto brightness-0 invert opacity-90"
               />
             </Link>
             <p className="text-white/60 text-sm leading-relaxed max-w-xs">
-              Charlotte&apos;s premier uniform partner. No long-term contracts, no surprise fees — just exceptional service.
+              Custom screen printing &amp; embroidery across the Charlotte metro area.
             </p>
           </div>
 
@@ -60,7 +58,10 @@ export default function Footer() {
                     className="flex items-start gap-3 text-white/60 hover:text-white transition-colors duration-300 text-sm group"
                   >
                     <item.icon size={16} className="mt-0.5 flex-shrink-0 text-cyan/60 group-hover:text-cyan transition-colors duration-300" />
-                    {item.text}
+                    <span>
+                      {item.label && <span className="text-white/60 text-xs block">{item.label}</span>}
+                      {item.text}
+                    </span>
                   </a>
                 </li>
               ))}
@@ -70,7 +71,7 @@ export default function Footer() {
           {/* Services Column */}
           <div>
             <h4 className="font-body text-xs font-semibold uppercase tracking-[0.15em] text-white/60 mb-5">
-              Solutions
+              Services
             </h4>
             <ul className="space-y-3">
               {serviceLinks.map((link) => (

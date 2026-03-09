@@ -17,7 +17,11 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Bright Way | Charlotte's Premier Uniform Partner",
+  metadataBase: new URL("https://brightwayuniforms.com"),
+  title: {
+    default: "Bright Way | Charlotte's Premier Uniform Partner",
+    template: "%s | Bright Way",
+  },
   description:
     "No long-term contracts. No surprise fees. Just fast installs, fair pricing, and real people who answer the phone. Industrial, restaurant, and professional uniform services in Charlotte, NC.",
   keywords: [
@@ -34,6 +38,14 @@ export const metadata: Metadata = {
     description:
       "No long-term contracts. No surprise fees. Just fast installs, fair pricing, and real people who answer the phone.",
     type: "website",
+    siteName: "Bright Way Uniforms",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Bright Way | Charlotte's Premier Uniform Partner",
+    description:
+      "No long-term contracts. No surprise fees. Just fast installs, fair pricing, and real people who answer the phone.",
   },
 };
 
@@ -45,6 +57,101 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${dmSerif.variable} ${plusJakarta.variable}`}>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "LocalBusiness",
+                name: "Bright Way Uniforms",
+                url: "https://brightwayuniforms.com",
+                telephone: "+1-704-827-1868",
+                email: "info@brightwayuniforms.com",
+                address: {
+                  "@type": "PostalAddress",
+                  streetAddress: "1196 Noles Drive",
+                  addressLocality: "Mount Holly",
+                  addressRegion: "NC",
+                  postalCode: "28120",
+                  addressCountry: "US",
+                },
+                geo: {
+                  "@type": "GeoCoordinates",
+                  latitude: 35.2988,
+                  longitude: -81.0157,
+                },
+                areaServed: {
+                  "@type": "GeoCircle",
+                  geoMidpoint: { "@type": "GeoCoordinates", latitude: 35.2271, longitude: -80.8431 },
+                  geoRadius: "80467",
+                },
+                openingHoursSpecification: {
+                  "@type": "OpeningHoursSpecification",
+                  dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                  opens: "08:00",
+                  closes: "17:00",
+                },
+                priceRange: "$$",
+                image: "https://brightwayuniforms.com/logo.png",
+                description:
+                  "Charlotte's premier uniform partner. Industrial, restaurant, and professional uniform services with no long-term contracts.",
+                aggregateRating: {
+                  "@type": "AggregateRating",
+                  ratingValue: "5.0",
+                  reviewCount: "6",
+                  bestRating: "5",
+                },
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                mainEntity: [
+                  {
+                    "@type": "Question",
+                    name: "How are you able to offer services without long-term contracts?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "We earn your business week-to-week through responsive service, reliable deliveries, and transparent pricing. If we ever stop delivering on that promise, you're free to walk—no strings attached.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "How do you keep your weekly billing consistent?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "Every garment is scanned, every rate is pre-agreed, and every invoice follows the same clear format. No surprises, no nonsense—just transparent, high-quality performance.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "What other services do you offer?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "Beyond uniforms, we stock safety gear, bar towels, shop rags, floor mats, and custom-decorated apparel—so you can swap a handful of vendors for one reliable partner.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "How quickly can you outfit a new hire?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "Fast—really fast. Our deep local supplier network and relentless client-first mindset mean this moves quickly. Even specialty requests move at Bright Way speed.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "How do I request a quote or on-site assessment?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "Use our contact form, call us directly, or email info@brightwayuniforms.com. A service specialist will schedule a quick walkthrough, then send a detailed proposal—usually within 24 hours.",
+                    },
+                  },
+                ],
+              },
+            ]),
+          }}
+        />
         <ClientLayout>{children}</ClientLayout>
         <noscript>
           <style>{`.scroll-reveal { opacity: 1 !important; transform: none !important; }`}</style>

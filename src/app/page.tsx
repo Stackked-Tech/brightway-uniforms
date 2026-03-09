@@ -1,46 +1,23 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Bright Way | Charlotte's Premier Uniform & Facility Solutions",
+  description:
+    "Uniforms, facility services, flame resistant clothing, and hygiene solutions for Charlotte-area businesses. No long-term contracts, no hidden fees. Get a free quote today.",
+};
 import { ArrowRight } from "lucide-react";
 import Hero from "@/components/Hero";
 import TrustBar from "@/components/TrustBar";
-import ServiceCard from "@/components/ServiceCard";
+import SolutionsGrid from "@/components/SolutionsGrid";
 import HowItWorks from "@/components/HowItWorks";
 import ValueProps from "@/components/ValueProps";
 import ClientLogos from "@/components/ClientLogos";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import CTABanner from "@/components/CTABanner";
-import ServicesGrid from "@/components/ServicesGrid";
-
-const services = [
-  {
-    image:
-      "https://www.serviceuniform.com/wp-content/uploads/2022/10/manufacturing-uniforms-colorado-scaled.jpg",
-    title: "Industrial",
-    description:
-      "Durable uniforms for manufacturing, automotive, HVAC, and other demanding industries. Built for safety and performance.",
-    linkText: "Gear Up the Crew →",
-    linkHref: "/services/industrial",
-    featured: true,
-  },
-  {
-    image:
-      "https://images.ctfassets.net/9hll0m1ctx1b/4aaLhZoUpPeT9WkRDNxebo/14da3b42a593c82d82768a7c699cdf3d/Chef.jpg?w=1000&h=666&fl=progressive&q=80&fm=jpg",
-    title: "Restaurants",
-    description:
-      "Crisp chef coats, aprons, server attire, and quality linens to enhance your establishment's image.",
-    linkText: "Style That Handles the Heat →",
-    linkHref: "/services/restaurants",
-  },
-  {
-    image:
-      "https://images.squarespace-cdn.com/content/5b0ba6af36099bd6c699181b/1752570110820-ZYZFXRFHVXFMQR090K2W/corporate-uniforms-guide-Professional-business-attire-team-banner.jpg",
-    title: "Professional",
-    description:
-      "Smart and comfortable uniforms for front office, municipalities, healthcare (non-clinical), and other professional environments.",
-    linkText: "Dress to Impress →",
-    linkHref: "/services/professional",
-  },
-];
+import WhySwitch from "@/components/WhySwitch";
+import IndustriesServed from "@/components/IndustriesServed";
 
 export default function HomePage() {
   return (
@@ -69,10 +46,13 @@ export default function HomePage() {
       {/* Trust Stats Bar */}
       <TrustBar />
 
-      {/* Services Section */}
+      {/* Solutions */}
       <div data-tour="services">
-        <ServicesGrid services={services} />
+        <SolutionsGrid />
       </div>
+
+      {/* Industries We Serve */}
+      <IndustriesServed />
 
       {/* How It Works */}
       <div data-tour="how-it-works">
@@ -83,6 +63,9 @@ export default function HomePage() {
       <div data-tour="why-bright-way">
         <ValueProps />
       </div>
+
+      {/* Why Switch */}
+      <WhySwitch />
 
       {/* Client Logos */}
       <ClientLogos />
